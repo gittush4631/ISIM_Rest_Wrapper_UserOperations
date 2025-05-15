@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.ws.itim.ibm.com" xmlns:impl="http://services.ws.itim.ibm.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:intf="http://services.ws.itim.ibm.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns1="http://model.ws.itim.ibm.com" xmlns:tns2="http://exceptions.ws.itim.ibm.com">
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://services.ws.itim.ibm.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exceptions.ws.itim.ibm.com"/>
+   <import namespace="http://model.ws.itim.ibm.com"/>
+   <element name="addDelegate">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+      <element name="delegator" type="tns1:WSSystemUser"/>
+      <element name="delegate" type="tns1:WSDelegate"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_string">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_WSAttribute">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:WSAttribute"/>
+    </sequence>
+   </complexType>
+   <element name="addDelegateResponse">
+    <complexType/>
+   </element>
+   <element name="fault2" type="tns2:WSInvalidSessionException"/>
+   <element name="fault1" type="tns2:WSApplicationException"/>
+   <element name="getChallengeResponseConfiguration">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getChallengeResponseConfigurationResponse">
+    <complexType>
+     <sequence>
+      <element name="getChallengeResponseConfigurationReturn" type="tns1:WSChallengeResponseConfiguration"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_WSChallenge">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:WSChallenge"/>
+    </sequence>
+   </complexType>
+   <element name="getDelegates">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+      <element name="delegator" type="tns1:WSSystemUser"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDelegatesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getDelegatesReturn" type="tns1:WSDelegateInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getExistingChallengeResponseInfo">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getExistingChallengeResponseInfoResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getExistingChallengeResponseInfoReturn" type="tns1:WSChallengeResponseInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSystemRoleNames">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+      <element name="systemUserDN" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSystemRoleNamesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getSystemRoleNamesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns2:WSLoginServiceException"/>
+   <element name="getSystemUser">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSystemUserResponse">
+    <complexType>
+     <sequence>
+      <element name="getSystemUserReturn" type="tns1:WSSystemUser"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSystemUsersForPerson">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+      <element name="personDN" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSystemUsersForPersonResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getSystemUsersForPersonReturn" type="tns1:WSSystemUser"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyDelegate">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+      <element name="delegator" type="tns1:WSSystemUser"/>
+      <element name="oldDelegate" type="tns1:WSDelegate"/>
+      <element name="newDelegate" type="tns1:WSDelegate"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyDelegateResponse">
+    <complexType/>
+   </element>
+   <element name="removeDelegate">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+      <element name="delegator" type="tns1:WSSystemUser"/>
+      <element name="delegate" type="tns1:WSDelegate"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeDelegateResponse">
+    <complexType/>
+   </element>
+   <element name="searchSystemUsers">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+      <element name="filter" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchSystemUsersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="searchSystemUsersReturn" type="tns1:WSSystemUser"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setChallengeResponseInfo">
+    <complexType>
+     <sequence>
+      <element name="session" type="tns1:WSSession"/>
+      <element maxOccurs="unbounded" name="newCRs" type="tns1:WSChallengeResponseInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setChallengeResponseInfoResponse">
+    <complexType/>
+   </element>
+  </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://model.ws.itim.ibm.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://exceptions.ws.itim.ibm.com"/>
+   <import namespace="http://services.ws.itim.ibm.com"/>
+   <complexType name="WSLocale">
+    <sequence>
+     <element minOccurs="0" name="country" nillable="true" type="xsd:string"/>
+     <element minOccurs="0" name="variant" nillable="true" type="xsd:string"/>
+     <element name="language" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="WSSession">
+    <sequence>
+     <element name="clientSession" nillable="true" type="xsd:string"/>
+     <element name="enforceChallengeResponse" type="xsd:boolean"/>
+     <element minOccurs="0" name="locale" nillable="true" type="tns1:WSLocale"/>
+     <element name="sessionID" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="WSAttribute">
+    <sequence>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="operation" type="xsd:int"/>
+     <element name="values" nillable="true" type="impl:ArrayOf_xsd_string"/>
+     <element default="false" minOccurs="0" name="isEncoded" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="WSObject">
+    <sequence>
+     <element name="attributes" nillable="true" type="impl:ArrayOf_tns1_WSAttribute"/>
+     <element name="select" type="xsd:boolean"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="itimDN" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="WSSystemUser">
+    <complexContent>
+     <extension base="tns1:WSObject">
+      <sequence>
+       <element name="itimAdmin" type="xsd:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="WSDelegate">
+    <complexContent>
+     <extension base="tns1:WSObject">
+      <sequence>
+       <element name="endDate" nillable="true" type="xsd:dateTime"/>
+       <element name="startDate" nillable="true" type="xsd:dateTime"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="WSChallenge">
+    <sequence>
+     <element name="question" nillable="true" type="xsd:string"/>
+     <element minOccurs="0" name="locale" nillable="true" type="tns1:WSLocale"/>
+    </sequence>
+   </complexType>
+   <complexType name="WSChallengeResponseConfiguration">
+    <sequence>
+     <element name="adminChallenges" nillable="true" type="impl:ArrayOf_tns1_WSChallenge"/>
+     <element name="userDefined" type="xsd:boolean"/>
+     <element name="challengeResponseEnabled" type="xsd:boolean"/>
+     <element name="numberRequiredChallenges" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="WSDelegateInfo">
+    <complexContent>
+     <extension base="tns1:WSDelegate">
+      <sequence>
+       <element name="delegated" type="xsd:boolean"/>
+       <element name="userid" nillable="true" type="xsd:string"/>
+       <element name="accountActive" type="xsd:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="WSChallengeResponseInfo">
+    <sequence>
+     <element name="question" nillable="true" type="xsd:string"/>
+     <element name="answer" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://exceptions.ws.itim.ibm.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model.ws.itim.ibm.com"/>
+   <import namespace="http://services.ws.itim.ibm.com"/>
+   <complexType name="WSLoginServiceException">
+    <sequence/>
+   </complexType>
+   <complexType name="WSInvalidSessionException">
+    <complexContent>
+     <extension base="tns2:WSLoginServiceException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="WSApplicationException">
+    <sequence/>
+   </complexType>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="getSystemRoleNamesRequest">
+    <wsdl:part name="parameters" element="impl:getSystemRoleNames">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDelegateResponse">
+    <wsdl:part name="parameters" element="impl:addDelegateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSInvalidSessionException">
+    <wsdl:part name="fault" element="impl:fault2">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSystemUserRequest">
+    <wsdl:part name="parameters" element="impl:getSystemUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setChallengeResponseInfoRequest">
+    <wsdl:part name="parameters" element="impl:setChallengeResponseInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSLoginServiceException">
+    <wsdl:part name="fault" element="impl:fault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSystemUsersForPersonResponse">
+    <wsdl:part name="parameters" element="impl:getSystemUsersForPersonResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyDelegateResponse">
+    <wsdl:part name="parameters" element="impl:modifyDelegateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addDelegateRequest">
+    <wsdl:part name="parameters" element="impl:addDelegate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getExistingChallengeResponseInfoRequest">
+    <wsdl:part name="parameters" element="impl:getExistingChallengeResponseInfo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getChallengeResponseConfigurationResponse">
+    <wsdl:part name="parameters" element="impl:getChallengeResponseConfigurationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getExistingChallengeResponseInfoResponse">
+    <wsdl:part name="parameters" element="impl:getExistingChallengeResponseInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyDelegateRequest">
+    <wsdl:part name="parameters" element="impl:modifyDelegate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDelegatesResponse">
+    <wsdl:part name="parameters" element="impl:getDelegatesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDelegatesRequest">
+    <wsdl:part name="parameters" element="impl:getDelegates">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeDelegateResponse">
+    <wsdl:part name="parameters" element="impl:removeDelegateResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSystemUserResponse">
+    <wsdl:part name="parameters" element="impl:getSystemUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setChallengeResponseInfoResponse">
+    <wsdl:part name="parameters" element="impl:setChallengeResponseInfoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchSystemUsersResponse">
+    <wsdl:part name="parameters" element="impl:searchSystemUsersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeDelegateRequest">
+    <wsdl:part name="parameters" element="impl:removeDelegate">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSystemRoleNamesResponse">
+    <wsdl:part name="parameters" element="impl:getSystemRoleNamesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSApplicationException">
+    <wsdl:part name="fault" element="impl:fault1">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getChallengeResponseConfigurationRequest">
+    <wsdl:part name="parameters" element="impl:getChallengeResponseConfiguration">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchSystemUsersRequest">
+    <wsdl:part name="parameters" element="impl:searchSystemUsers">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSystemUsersForPersonRequest">
+    <wsdl:part name="parameters" element="impl:getSystemUsersForPerson">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSSystemUserService">
+    <wsdl:operation name="addDelegate">
+      <wsdl:input name="addDelegateRequest" message="impl:addDelegateRequest">
+    </wsdl:input>
+      <wsdl:output name="addDelegateResponse" message="impl:addDelegateResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+      <wsdl:fault name="WSInvalidSessionException" message="impl:WSInvalidSessionException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getChallengeResponseConfiguration">
+      <wsdl:input name="getChallengeResponseConfigurationRequest" message="impl:getChallengeResponseConfigurationRequest">
+    </wsdl:input>
+      <wsdl:output name="getChallengeResponseConfigurationResponse" message="impl:getChallengeResponseConfigurationResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDelegates">
+      <wsdl:input name="getDelegatesRequest" message="impl:getDelegatesRequest">
+    </wsdl:input>
+      <wsdl:output name="getDelegatesResponse" message="impl:getDelegatesResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+      <wsdl:fault name="WSInvalidSessionException" message="impl:WSInvalidSessionException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getExistingChallengeResponseInfo">
+      <wsdl:input name="getExistingChallengeResponseInfoRequest" message="impl:getExistingChallengeResponseInfoRequest">
+    </wsdl:input>
+      <wsdl:output name="getExistingChallengeResponseInfoResponse" message="impl:getExistingChallengeResponseInfoResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleNames">
+      <wsdl:input name="getSystemRoleNamesRequest" message="impl:getSystemRoleNamesRequest">
+    </wsdl:input>
+      <wsdl:output name="getSystemRoleNamesResponse" message="impl:getSystemRoleNamesResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+      <wsdl:fault name="WSLoginServiceException" message="impl:WSLoginServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemUser">
+      <wsdl:input name="getSystemUserRequest" message="impl:getSystemUserRequest">
+    </wsdl:input>
+      <wsdl:output name="getSystemUserResponse" message="impl:getSystemUserResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+      <wsdl:fault name="WSLoginServiceException" message="impl:WSLoginServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemUsersForPerson">
+      <wsdl:input name="getSystemUsersForPersonRequest" message="impl:getSystemUsersForPersonRequest">
+    </wsdl:input>
+      <wsdl:output name="getSystemUsersForPersonResponse" message="impl:getSystemUsersForPersonResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+      <wsdl:fault name="WSLoginServiceException" message="impl:WSLoginServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modifyDelegate">
+      <wsdl:input name="modifyDelegateRequest" message="impl:modifyDelegateRequest">
+    </wsdl:input>
+      <wsdl:output name="modifyDelegateResponse" message="impl:modifyDelegateResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+      <wsdl:fault name="WSInvalidSessionException" message="impl:WSInvalidSessionException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeDelegate">
+      <wsdl:input name="removeDelegateRequest" message="impl:removeDelegateRequest">
+    </wsdl:input>
+      <wsdl:output name="removeDelegateResponse" message="impl:removeDelegateResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+      <wsdl:fault name="WSInvalidSessionException" message="impl:WSInvalidSessionException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchSystemUsers">
+      <wsdl:input name="searchSystemUsersRequest" message="impl:searchSystemUsersRequest">
+    </wsdl:input>
+      <wsdl:output name="searchSystemUsersResponse" message="impl:searchSystemUsersResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+      <wsdl:fault name="WSLoginServiceException" message="impl:WSLoginServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setChallengeResponseInfo">
+      <wsdl:input name="setChallengeResponseInfoRequest" message="impl:setChallengeResponseInfoRequest">
+    </wsdl:input>
+      <wsdl:output name="setChallengeResponseInfoResponse" message="impl:setChallengeResponseInfoResponse">
+    </wsdl:output>
+      <wsdl:fault name="WSApplicationException" message="impl:WSApplicationException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSSystemUserServiceSoapBinding" type="impl:WSSystemUserService">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addDelegate">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addDelegateRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addDelegateResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSInvalidSessionException">
+        <wsdlsoap:fault name="WSInvalidSessionException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getChallengeResponseConfiguration">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getChallengeResponseConfigurationRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getChallengeResponseConfigurationResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDelegates">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDelegatesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDelegatesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSInvalidSessionException">
+        <wsdlsoap:fault name="WSInvalidSessionException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getExistingChallengeResponseInfo">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getExistingChallengeResponseInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getExistingChallengeResponseInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemRoleNames">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getSystemRoleNamesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSystemRoleNamesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSLoginServiceException">
+        <wsdlsoap:fault name="WSLoginServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemUser">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getSystemUserRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSystemUserResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSLoginServiceException">
+        <wsdlsoap:fault name="WSLoginServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSystemUsersForPerson">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getSystemUsersForPersonRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSystemUsersForPersonResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSLoginServiceException">
+        <wsdlsoap:fault name="WSLoginServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modifyDelegate">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="modifyDelegateRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyDelegateResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSInvalidSessionException">
+        <wsdlsoap:fault name="WSInvalidSessionException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeDelegate">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="removeDelegateRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeDelegateResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSInvalidSessionException">
+        <wsdlsoap:fault name="WSInvalidSessionException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchSystemUsers">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="searchSystemUsersRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchSystemUsersResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSLoginServiceException">
+        <wsdlsoap:fault name="WSLoginServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setChallengeResponseInfo">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="setChallengeResponseInfoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setChallengeResponseInfoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSApplicationException">
+        <wsdlsoap:fault name="WSApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSSystemUserServiceService">
+    <wsdl:port name="WSSystemUserService" binding="impl:WSSystemUserServiceSoapBinding">
+      <wsdlsoap:address location="http://192.168.42.170:9080/itim/services/WSSystemUserServiceService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
